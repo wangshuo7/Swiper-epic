@@ -741,8 +741,8 @@ const goToSlide = (index: number) => {
     }
   }
 }
-/* 在屏幕宽度小于等于 1024 像素时应用的样式 */
-@media screen and (max-width: 1023px) {
+/* 在屏幕宽度在 768 到 1023 像素之间时应用的样式 */
+@media screen and (min-width: 768px) and (max-width: 1023px) {
   // .side-item {
   //   border-radius: 10px;
   // }
@@ -829,6 +829,200 @@ const goToSlide = (index: number) => {
           a {
             width: 150px;
             height: 50px;
+            font-size: 14px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+          }
+          .buy-pay {
+            background-color: #fff;
+            color: #000;
+            // border: 1px solid #000;
+            border-radius: 4px;
+          }
+          .buy-add {
+            margin-left: 15px;
+            color: #fff;
+            border-radius: 4px;
+            background-color: rgba(255, 255, 255, 0);
+            transition: background-color 0.3s ease;
+          }
+          .buy-add:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+            // transition:
+          }
+        }
+      }
+    }
+  }
+  .sidebox {
+    margin-left: 2%;
+    flex: 1;
+    // background-color: orange;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    .side-item {
+      width: 100%;
+      height: 16.32%;
+      list-style: none;
+      border-radius: 10px; // 媒体查询
+      position: relative;
+      overflow: hidden;
+      // background-color: red;
+      .side-mark {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        left: -100%;
+        background: #363636;
+        animation: move-right 5200ms linear;
+      }
+      @keyframes move-right {
+        0% {
+          left: -256px;
+        }
+        100% {
+          left: 0;
+        }
+      }
+      a {
+        display: block;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+      }
+      .side-img {
+        width: 20%;
+        // height: auto;
+        margin: 0 5.86%;
+        border-radius: 8px;
+        overflow: hidden;
+        .img {
+          width: 100%;
+          height: 100%;
+        }
+      }
+      .side-img.active {
+        animation: the-scale 300ms linear;
+      }
+      @keyframes the-scale {
+        0% {
+          transform: scale(1);
+        }
+        50% {
+          transform: scale(1.1);
+        }
+        100% {
+          transform: scale(1);
+        }
+      }
+      .side-text {
+        width: 65%;
+        line-height: 16px;
+        font-size: 12px;
+        color: rgb(245, 245, 245);
+        z-index: 99;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        -webkit-line-clamp: 2; /* 控制显示的行数，根据实际需要调整 */
+        text-overflow: ellipsis;
+      }
+    }
+    .side-item:hover {
+      background-color: #252525;
+    }
+    .side-item.active {
+      background-color: #252525;
+    }
+  }
+}
+/* 在屏幕宽度小于等于 768 像素时应用的样式 */
+@media screen and (max-width: 768px) {
+  .container {
+    width: 95%;
+    // min-height: 306.56px;
+    // min-width: 720px;
+    // max-width: 1600px;
+    position: relative;
+    aspect-ratio: 976 / 450;
+    margin: 0 auto;
+    overflow: hidden;
+    display: flex;
+  }
+  .swiperbox {
+    width: 82%;
+    height: 100%;
+    position: relative;
+    border-radius: 15px;
+    overflow: hidden;
+    .swiperbox-a {
+      display: block;
+      width: 100%;
+      height: 100%;
+      .swiper-img {
+        width: 100%;
+        height: 100%;
+      }
+    }
+    .swiperbox-content {
+      // background: skyblue;
+      position: absolute;
+      width: 320px;
+      height: 300px;
+      bottom: 32px;
+      left: 32px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      color: rgb(245, 245, 245);
+      .info {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        .info-logo {
+          width: 100px;
+          height: 25px;
+          margin-bottom: 20px;
+          display: none;
+          // display: flex;
+          justify-content: center;
+          align-items: center;
+          .el-image {
+            width: 100%;
+            // height: 100%;
+          }
+        }
+
+        .info-time {
+          font-size: 12px;
+          margin-bottom: 12px;
+          display: none; // 
+        }
+        .info-discription {
+          display: none; // 
+          font-size: 18px;
+          margin-bottom: 20px;
+          height: 60px;
+        }
+      }
+      .buy {
+        height: 60px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        .buy-price {
+          font-size: 14px;
+          color: rgb(245, 245, 245);
+          // margin-bottom: 10px;
+        }
+        .buttons {
+          display: flex;
+          a {
+            width: 90px;
+            height: 30px;
             font-size: 14px;
             display: flex;
             justify-content: center;

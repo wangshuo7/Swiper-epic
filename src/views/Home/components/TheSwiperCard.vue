@@ -33,6 +33,10 @@
         @swiper="onSwiper"
         :allowTouchMove="false"
         :breakpoints="{
+          375: {
+            slidesPerView: 2,
+            spaceBetween: 10
+          },
           768: {
             slidesPerView: 4,
             spaceBetween: 10
@@ -286,8 +290,10 @@ const slidesPerPage = ref<number>(6) // 每页显示的轮播图数量
 const nextNone = ref<boolean>(false)
 function nextSlide() {
   if (theSwiper.value) {
-    if (window.innerWidth < 768) {
+    if (window.innerWidth < 375) {
       slidesPerPage.value = 1
+    } else if (window.innerWidth < 768) {
+      slidesPerPage.value = 2
     } else if (window.innerWidth < 1024) {
       slidesPerPage.value = 4
     } else if (window.innerWidth < 1600) {
@@ -317,8 +323,10 @@ function nextSlide() {
 const prevNone = ref<boolean>(false)
 function prevSlide() {
   if (theSwiper.value) {
-    if (window.innerWidth < 768) {
+    if (window.innerWidth < 375) {
       slidesPerPage.value = 1
+    } else if (window.innerWidth < 768) {
+      slidesPerPage.value = 2
     } else if (window.innerWidth < 1024) {
       slidesPerPage.value = 4
     } else if (window.innerWidth < 1600) {
@@ -360,8 +368,10 @@ watch(
 onMounted(() => {
   prevNone.value = true
   if (theSwiper.value) {
-    if (window.innerWidth < 768) {
+    if (window.innerWidth < 375) {
       slidesPerPage.value = 1
+    } else if (window.innerWidth < 768) {
+      slidesPerPage.value = 2
     } else if (window.innerWidth < 1024) {
       slidesPerPage.value = 4
     } else if (window.innerWidth < 1600) {
