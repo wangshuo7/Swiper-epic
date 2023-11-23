@@ -289,6 +289,7 @@ const onSwiper = (swiper: any) => {
 const slidesPerPage = ref<number>(6) // 每页显示的轮播图数量
 const nextNone = ref<boolean>(false)
 function nextSlide() {
+  if (nextNone.value) return
   if (theSwiper.value) {
     if (window.innerWidth < 375) {
       slidesPerPage.value = 1
@@ -322,6 +323,7 @@ function nextSlide() {
 }
 const prevNone = ref<boolean>(false)
 function prevSlide() {
+  if (prevNone.value) return
   if (theSwiper.value) {
     if (window.innerWidth < 375) {
       slidesPerPage.value = 1
@@ -357,7 +359,9 @@ watch(
     // 计算上一页第一个轮播图的索引
     const prevPageFirstSlideIndex = newIndex - slidesPerPage.value
     // 如果上一页的第一个轮播图索引大于等于0，则设置 prevNone 为 false，否则设置为 true
-    prevNone.value = prevPageFirstSlideIndex < 0 && prevPageFirstSlideIndex == -slidesPerPage.value
+    prevNone.value =
+      prevPageFirstSlideIndex < 0 &&
+      prevPageFirstSlideIndex == -slidesPerPage.value
     // 计算下一页第一个轮播图的索引
     const nextPageFirstSlideIndex = newIndex + slidesPerPage.value
     // 如果下一页的第一个轮播图索引超过了总轮播图数量，则设置 nextNone 为 true，否则设置为 false
